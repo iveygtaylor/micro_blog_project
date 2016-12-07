@@ -15,6 +15,7 @@ GEM
     arel (7.1.4)
     awesome_print (1.7.0)
     backports (3.6.8)
+    byebug (9.0.6)
     concurrent-ruby (1.0.2)
     haml (4.0.7)
       tilt
@@ -53,6 +54,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   awesome_print
+  byebug
   haml
   rake
   sinatra

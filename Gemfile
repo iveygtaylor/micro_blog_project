@@ -11,3 +11,7 @@ gem 'sqlite3'
 gem 'rake'
 
 gem 'haml'
+
+group :development, :test do
+  gem 'byebug'
+end
