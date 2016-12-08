@@ -1,8 +1,18 @@
 .container
   %h1
-    User:
-    = @user.full_name
+    Your Account Details:
+  %br
+  = @user.first_name
+  %br
+  =@user.last_name
   %br
   = @user.email
   %br
-
+  = @user.username
+  %br
+  =@user.password
+  %br
+  %br
+  - if @user.blog
+    %a{href: "/blogs/#{@user.blog.slug}"}
+      = 'Visit my blog >>> ' + @user.blog.title

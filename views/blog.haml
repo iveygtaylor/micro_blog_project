@@ -1,0 +1,10 @@
+%h1
+  = @blog.title
+  = 'By ' + @blog.user.first_name
+  %br
+  - if @blog.posts.count > 0
+    %h2 Posts
+    - @blog.posts.each do |p|
+      = p.title
+      %br
+      %hr

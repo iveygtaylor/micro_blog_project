@@ -20,6 +20,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :email, default: ''
       t.string :password, default: ''
       t.datetime :birthday, default: ''
+      t.string :username, default: ''
       t.string :phone, default: ''
 
       t.timestamps

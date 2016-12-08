@@ -1,0 +1,30 @@
+.container
+  %h1 Your Account Details:
+  - if @message
+    #message
+      = @message
+  %form{:action => "/profile", :method => "POST"}
+    %label{:for => "username"} Username
+    %input{:name => "user[username]", :type => "text", :value => "#{current_user.username}"}/
+    %br
+    %br
+    %label{:for => "first_name"} First Name
+    %input{:name => "user[first_name]", :type => "text", :value => "#{current_user.first_name}"}/
+    %br
+    %br
+    %label{:for => "last_name"} Last Name
+    %input{:name => "user[last_name]", :type => "text", :value => "#{current_user.last_name}"}/
+    %br
+    %br
+    %label{:for => "email"} Email Address
+    %input{:name => "user[email]", :type => "text", :value => "#{current_user.email}"}/
+    %br
+    %br
+    %label{:for => "password"} Password
+    %input{:name => "user[password]", :type => "text", :value => "#{current_user.password}"}/
+    %input{:type => "submit"}/
+    %br
+    %br
+    %b
+      %h2 Want to leave the circle?
+    %a{:href => "/profile/delete"} Delete My Profile

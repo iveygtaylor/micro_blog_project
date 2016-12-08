@@ -2,7 +2,17 @@
 %html
   %head
     %title Sinatra-ActiveRecord
+    %link{rel: "stylesheet", type: "text/css", href: "css/master.css"}
   %body
+    %a{href: '/'} Home
     %a{href: '/users'} Users
-    %a{href: '/home'} Home
+    - unless current_user
+      // User is not logged in so show these links
+      %a{href: '/sign_up'} Sign Up
+      %a{href: '/sign_in'} Login
+    - else
+      // User is logged in so show these links
+      %a{href: '/profile'} Profile
+      %a{href: '/logout'} Logout
+    = styled_flash
     = yield

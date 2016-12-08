@@ -3,6 +3,7 @@ ruby '2.3.0'
 
 gem 'sinatra'
 gem 'sinatra-contrib'
+gem 'sinatra-flash'
 
 gem 'awesome_print'
 gem 'activerecord'

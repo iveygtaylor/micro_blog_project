@@ -10,14 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161207183414) do
+ActiveRecord::Schema.define(version: 20161208162158) do
+
+  create_table "blogs", force: :cascade do |t|
+    t.string   "title",       default: ""
+    t.text     "description", default: ""
+    t.string   "slug",        default: ""
+    t.integer  "user_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["user_id"], name: "index_blogs_on_user_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title",      default: ""
-    t.string   "body",       default: ""
-    t.integer  "user_id"
+    t.text     "body",       default: ""
+    t.string   "slug",       default: ""
+    t.integer  "blog_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.index ["blog_id"], name: "index_posts_on_blog_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -39,6 +51,7 @@ ActiveRecord::Schema.define(version: 20161207183414) do
     t.string   "phone",      default: ""
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.string   "username"
   end
 
 end

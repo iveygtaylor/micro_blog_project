@@ -1,0 +1,13 @@
+%h1 Login
+%br
+- if @error
+  #errors{style: 'background-color: red; color: black;'}
+    = @error
+%br
+%form{:action => "/sessions/create", :method => "POST"}
+  %label{:for => "username"} Username
+  %input{:name => "username", :type => "text"}/
+  %label{:for => "password"} Password
+  %input{:name => "password", :type => "password"}/
+  %input{:type => "submit"}/
+
