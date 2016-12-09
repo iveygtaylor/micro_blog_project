@@ -10,7 +10,9 @@ class User < ActiveRecord::Base
 end
 
 class Post < ActiveRecord::Base
+  validates_length_of :body, :maximum=>150
   belongs_to :blog
+  has_one :user, through: :blog
 end
 
 class Room < ActiveRecord::Base

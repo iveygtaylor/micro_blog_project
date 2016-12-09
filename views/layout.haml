@@ -5,6 +5,9 @@
     %link{rel: "stylesheet", type: "text/css", href: "css/master.css"}
   %body
     %a{href: '/'} Home
+    - if current_user && current_user.blog
+      %a{href: "/blogs/#{current_user.blog.slug}"} Blog
+
     %a{href: '/users'} Users
     - unless current_user
       // User is not logged in so show these links
@@ -14,5 +17,6 @@
       // User is logged in so show these links
       %a{href: '/profile'} Profile
       %a{href: '/logout'} Logout
+      %a{href: '/create_post'} Create New Blog Post
     = styled_flash
     = yield

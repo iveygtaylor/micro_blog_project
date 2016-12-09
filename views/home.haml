@@ -1,3 +1,15 @@
 %h1 Sinatra ActiveRecord
 - if current_user
   %h2= 'Welcome ' + @current_user.first_name
+%br
+%br
+  %h2 Most Recent Posts
+  - @top_ten_posts.each do |post|
+    %h2
+      %a{href: "#"}
+        = post.title
+      = 'Written by '+ post.user.full_name
+    %br
+    = post.body
+    %br
+    %hr

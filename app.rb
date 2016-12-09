@@ -1,3 +1,12 @@
+# REST
+#get /posts         => Show all Posts
+#get /posts/:id     => Show Post
+#get /posts/new     => Shows the form for creating a post
+#post /posts/create => Create Post
+#get /posts/:id/edit => Edit Post
+#post/put /posts/:id/update => Update Post
+#post /posts/:id/delete
+
 #app.rb
 require "sinatra"
 require "sinatra/base"
@@ -39,6 +48,7 @@ class App < Sinatra::Base
         end
 
         get '/' do
+          @top_ten_posts = Post.last(10)
           haml :home
         end
 
@@ -66,7 +76,7 @@ class App < Sinatra::Base
         end
 
         get '/users' do
-          @users =User.all
+          @users = User.all
           haml :users
         end
 
@@ -131,6 +141,21 @@ class App < Sinatra::Base
              haml :sign_in
           end
         end
+
+       get '/create_post' do
+         haml :create_post
+       end
+
+       post '/create_post' do
+          @post = Post.new(params[:post])
+          if @post.save
+            flash[:info] = 'Post Created!'
+            redirect "/blogs/#{current_user.blog.slug}"
+          else
+            flash.now[:error] = 'We have a problem! Please fix it!'
+            haml :create_post
+          end
+       end
 
         get '/logout' do
           session[:user_id] = nil

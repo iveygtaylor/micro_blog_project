@@ -1,0 +1,20 @@
+%h1 Create a Blog
+%h2 Tell the world your thoughts in 150 characters or less.
+%form{:action => '/create_post', :method => "POST"}
+  - if current_user.blog
+    %input{:name => "post[blog_id]", :type => "hidden", :value => "#{current_user.blog.id}"}/
+
+  %label{:for => "post[title]"} Title
+  %input{:name => "post[title]", :type => "text"}/
+  %br
+  %br
+  %label{:for => "post[slug]"} Blog Slug
+  %input{:name => "post[slug]", :type => "text"}/
+  %br
+  %br
+  %label{:for => "post[body]"} Body
+  %br
+  %textarea{:cols => "50", :rows => "4", :name => "post[body]"}
+  %br
+  %br
+  %input{:type => "submit"}/
